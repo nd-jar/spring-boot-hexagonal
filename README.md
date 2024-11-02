@@ -16,7 +16,20 @@ Project shows, how to use hexagonal architecture in your spring boot application
 * this project uses Testcontainers, so run Docker on your local machine
 
 ## Getting Started
-`gradle testBootRun`
+`gradle bootTestRun`
+
+### Test Case
+```
+# Start Local Service
+$ ./gradlew bootTestRun
+
+# Insert One Event Data via POST Locally
+$ curl -d "id=1&name=test&description=test&from=local" -X POST http://localhost:8080/
+
+# Get One Event Data via GET
+$ curl http://localhost:8080/1
+{"eventPersistenceAdapter":{"id":"1","name":"test","description":"test","from":"local"},"redisCacheAdapter":{"id":"1","name":"test","description":"test","from":"local"}}
+```
 
 ## Project Structure
 ```
